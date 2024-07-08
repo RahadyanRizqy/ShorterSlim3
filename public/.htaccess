@@ -1,0 +1,17 @@
+
+# HTID:23440412: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:23440412:
+
+RewriteEngine On
+
+# Redirect root URL to index.html
+RewriteRule ^$ index.html [L]
+
+RewriteRule ^scripts/ - [F,L]
+
+# If the request is not for a valid file or directory,
+# rewrite to index.php (backend) for other routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L]
